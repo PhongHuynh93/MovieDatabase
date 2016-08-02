@@ -21,6 +21,7 @@ public class MovieDBHelper extends SQLiteOpenHelper{
     private static final String DATABASE_NAME = "movieList.db";
 
     /**
+     * todo 3
      * Default constructor.
      * @param context The application context using this database.
      */
@@ -29,6 +30,7 @@ public class MovieDBHelper extends SQLiteOpenHelper{
     }
 
     /**
+     * todo 4
      * Called when the database is first created.
      * @param db The database being created, which all SQL statements will be executed on.
      */
@@ -52,6 +54,7 @@ public class MovieDBHelper extends SQLiteOpenHelper{
     }
 
     /**
+     * todo 5
      * Inserts the genre table into the database.
      * @param db The SQLiteDatabase the table is being inserted into.
      */
@@ -66,6 +69,9 @@ public class MovieDBHelper extends SQLiteOpenHelper{
     /**
      * Inserts the movie table into the database.
      * @param db The SQLiteDatabase the table is being inserted into.
+     *           A FOREIGN KEY in one table points to a PRIMARY KEY in another table.
+     *           http://www.w3schools.com/sql/sql_foreignkey.asp
+     *           tức là 1 thể loại phim sẽ bao gồm có bao nhiêu phim thuộc thể loại ấy (ý của dòng foreign key là như thế)
      */
     private void addMovieTable(SQLiteDatabase db){
         db.execSQL(
