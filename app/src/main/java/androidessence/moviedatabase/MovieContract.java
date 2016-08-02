@@ -6,11 +6,13 @@ import android.provider.BaseColumns;
 
 /**
  * Defines all of the tables and URIs needed for the Movie ContentProvider
- *
+ * <p/>
  * Created by adammcneilly on 9/19/15.
+ * todo http://guides.codepath.com/android/Creating-Content-Providers
  */
 public class MovieContract {
     /**
+     * TODO 1 tạo địa chỉ cho content provider
      * The Content Authority is a name for the entire content provider, similar to the relationship
      * between a domain name and its website. A convenient string to use for content authority is
      * the package name for the app, since it is guaranteed to be unique on the device.
@@ -31,6 +33,7 @@ public class MovieContract {
     public static final String PATH_GENRE = "genre";
 
     /**
+     * todo 2 tao từng class tương ứng với từng table
      * Create one class for each table that handles all information regarding the table schema and
      * the URIs related to it.
      */
@@ -41,7 +44,7 @@ public class MovieContract {
 
         // These are special type prefixes that specify if a URI returns a list or a specific item
         public static final String CONTENT_TYPE =
-                "vnd.android.cursor.dir/" + CONTENT_URI  + "/" + PATH_MOVIE;
+                "vnd.android.cursor.dir/" + CONTENT_URI + "/" + PATH_MOVIE;
         public static final String CONTENT_ITEM_TYPE =
                 "vnd.android.cursor.item/" + CONTENT_URI + "/" + PATH_MOVIE;
 
@@ -52,12 +55,12 @@ public class MovieContract {
         public static final String COLUMN_GENRE = "movieGenre";
 
         // Define a function to build a URI to find a specific movie by it's identifier
-        public static Uri buildMovieUri(long id){
+        public static Uri buildMovieUri(long id) {
             return ContentUris.withAppendedId(CONTENT_URI, id);
         }
     }
 
-    public static final class GenreEntry implements BaseColumns{
+    public static final class GenreEntry implements BaseColumns {
         public static final Uri CONTENT_URI =
                 BASE_CONTENT_URI.buildUpon().appendPath(PATH_GENRE).build();
 
@@ -69,7 +72,7 @@ public class MovieContract {
         public static final String TABLE_NAME = "genreTable";
         public static final String COLUMN_NAME = "genreName";
 
-        public static Uri buildGenreUri(long id){
+        public static Uri buildGenreUri(long id) {
             return ContentUris.withAppendedId(CONTENT_URI, id);
         }
     }
