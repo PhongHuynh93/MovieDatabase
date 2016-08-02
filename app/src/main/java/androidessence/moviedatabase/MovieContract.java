@@ -1,6 +1,7 @@
 package androidessence.moviedatabase;
 
 import android.content.ContentUris;
+import android.content.ContentValues;
 import android.net.Uri;
 import android.provider.BaseColumns;
 
@@ -54,7 +55,11 @@ public class MovieContract {
         public static final String COLUMN_RELEASE_DATE = "movieReleaseDate";
         public static final String COLUMN_GENRE = "movieGenre";
 
-        // Define a function to build a URI to find a specific movie by it's identifier
+        /**
+         *         Define a function to build a URI to find a specific movie by it's identifier
+         *  {@link MovieProvider#insert(Uri, ContentValues)} cần hàm này để nó insert 1 row và nó pass id trong table cho content provider để sau này nó lấy lại được
+         *
+         */
         public static Uri buildMovieUri(long id) {
             return ContentUris.withAppendedId(CONTENT_URI, id);
         }
@@ -71,6 +76,7 @@ public class MovieContract {
 
         public static final String TABLE_NAME = "genreTable";
         public static final String COLUMN_NAME = "genreName";
+
 
         public static Uri buildGenreUri(long id) {
             return ContentUris.withAppendedId(CONTENT_URI, id);
